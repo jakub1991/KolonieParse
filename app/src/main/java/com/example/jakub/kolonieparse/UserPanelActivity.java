@@ -126,9 +126,20 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            Fragment fragment = null;
+
+            switch(position) {
+                case 0:
+                    fragment = new UserFragmentListR();
+                    break;
+                case 1:
+                    fragment = new UserFragmentListAll();
+                case 2:
+                    fragment = new UserFragmentListAll();
+                    break;
+
+            }
+            return fragment;
         }
 
         @Override
@@ -142,11 +153,11 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
+                    return " Twoje Rezerwacje ".toUpperCase(l);
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return " Wszystkie Kolonie ".toUpperCase(l);
                 case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
+                    return " Twoje Dane ".toUpperCase(l);
             }
             return null;
         }
@@ -173,6 +184,8 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
             fragment.setArguments(args);
             return fragment;
         }
+
+
 
         public PlaceholderFragment() {
         }

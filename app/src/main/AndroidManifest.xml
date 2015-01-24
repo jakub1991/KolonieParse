@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="Rezerwacja Koloni" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +40,10 @@
         <activity
             android:name=".UserPanelActivity"
             android:label="@string/title_activity_user_panel" >
+        </activity>
+        <activity
+            android:name=".SingleListItemUsr"
+            android:label="@string/title_activity_single_list_item_usr" >
         </activity>
     </application>
 

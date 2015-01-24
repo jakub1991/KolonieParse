@@ -36,5 +36,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="title_activity_single_list_item_org">SingleListItemOrg</string>
+    <string name="title_activity_single_list_item_usr">SingleListItemUsr</string>
 
 </resources>

@@ -22,6 +22,7 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        setTitle("Panel Logowania");
         usernameView = (EditText) findViewById(R.id.username);
         passwordView = (EditText) findViewById(R.id.password);
 
@@ -73,17 +74,30 @@ public class LoginActivity extends ActionBarActivity {
                                 Intent intent = new Intent(LoginActivity.this, UserPanelActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
+                                finish();
                             }
                             if(ParseUser.getCurrentUser().getString("UserType").toString().equals("organizer")) {
                                 Intent intent = new Intent(LoginActivity.this, OrganizerPanelActivty.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     }
                 });
             }
         });
+        findViewById(R.id.btnLinkToRegisterScreen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
     }
 
     private boolean isEmpty(EditText etText) {

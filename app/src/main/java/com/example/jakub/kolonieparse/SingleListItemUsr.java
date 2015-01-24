@@ -7,37 +7,64 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 import java.util.List;
 
 
-public class SingleListItemOrg extends ActionBarActivity {
+public class SingleListItemUsr extends ActionBarActivity {
+
     TextView nametext;
     TextView infotext;
     TextView pricetext;
     TextView timetext;
     Button deleterec;
     String aaa;
+    ParseObject tour;
+    private Switch mySwitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_list_item_org);
+        setContentView(R.layout.activity_single_list_item_usr);
         nametext=(TextView) findViewById(R.id.nametext);
         infotext=(TextView) findViewById(R.id.infyext);
         pricetext=(TextView) findViewById(R.id.pricetext);
         timetext=(TextView) findViewById(R.id.timetext);
         deleterec=(Button) findViewById(R.id.delbutton);
-         aaa="";
+        aaa="";
+        mySwitch = (Switch) findViewById(R.id.switch1);
+        mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+
+                if(isChecked){
+                    ParseObject list = new ParseObject("tour");
+                    ParseRelation<ParseObject> relation = tour.getRelation("User");
+                    relation.add(ParseUser.getCurrentUser());
+                    tour.saveInBackground();
+                }else{
+                    ParseRelation<ParseObject> relation = tour.getRelation("User");
+                    relation.remove(ParseUser.getCurrentUser());
+                    tour.saveInBackground();
+                }
+
+            }
+        });
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tour");
         query.whereEqualTo("objectId", getIntent().getExtras().getString("product"));
 
@@ -53,36 +80,38 @@ public class SingleListItemOrg extends ActionBarActivity {
                     infotext.setText("Opis: \n" + objects.get(0).get("Info").toString());
                     pricetext.setText(Integer.toString(objects.get(0).getInt("Price")));
                     timetext.setText("Czas trwania:\n od " + objects.get(0).get("StartDate").toString() + " do " + objects.get(0).get("EndDate").toString());
+                    tour=objects.get(0);
+                    ParseQuery a= objects.get(0).getRelation("User").getQuery();
+                    a.whereEqualTo("objectId",ParseUser.getCurrentUser().getObjectId().toString());
+                    a.findInBackground(new FindCallback<ParseObject>(){
+                        public void done(final List<ParseObject> obje, ParseException e) {
+                            if (e == null) {
+                                if(obje.isEmpty()) {
+                                    mySwitch.setChecked(false);
+                                    Log.d("Brand", "false");
+                                }
+                                else {
+                                    mySwitch.setChecked(true);
+                                    Log.d("Brand", "true");
+                                }
 
-                    deleterec.setOnClickListener(new View.OnClickListener() {
-                                                     @Override
-                                                     public void onClick(View v) {
-                                                         try {
-                                                             objects.get(0).delete();
-                                                             Intent refresh = new Intent(getApplicationContext(), OrganizerPanelActivty.class);
-                                                             startActivity(refresh);
-                                                             finish();
-                                                             Toast.makeText(getApplicationContext(), "Usunieto", Toast.LENGTH_LONG).show();
-                                                         } catch (ParseException e1) {
-                                                             e1.printStackTrace();
-                                                         }
+                            } else {
+                                Log.d("Brand", "erorr");
 
+                            }
+                        }}
+                    )
+                    ;
 
-
-                                                     }
-                                                 }
-
-
-                    );
 
                 } else {
                     Log.d("Brand", "Error: " + e.getMessage());
                 }
 
 
-
             }
         });
+
     }
 
 
