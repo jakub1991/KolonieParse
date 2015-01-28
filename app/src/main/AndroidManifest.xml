@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".LoginActivity"
-            android:label="Rezerwacja Koloni" >
+            android:label="Rezerwacja Koloni"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,15 +24,13 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_register" >
+            android:label="@string/title_activity_register"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".OrganizerPanelActivty"
-            android:label="@string/title_activity_organizer_panel_activty" >
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_organizer_panel_activty"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".SingleListItemOrg"
@@ -44,6 +43,10 @@
         <activity
             android:name=".SingleListItemUsr"
             android:label="@string/title_activity_single_list_item_usr" >
+        </activity>
+        <activity
+            android:name=".UserFragmentListInfo"
+            android:label="@string/title_activity_user_fragment_list_info" >
         </activity>
     </application>
 

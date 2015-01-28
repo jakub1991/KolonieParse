@@ -1,5 +1,6 @@
 package com.example.jakub.kolonieparse;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -52,7 +53,7 @@ public class OrganizerFragmentList extends Fragment {
                     }
                             objects_all=objects;
 
-                            arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,aaa);
+                            arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.item,aaa);
                             List.setAdapter(arrayAdapter);
                 } else {
                     Log.d("Brand", "Error: " + e.getMessage());
@@ -76,6 +77,7 @@ public class OrganizerFragmentList extends Fragment {
                 // sending data to new activity
                 i.putExtra("product", objects_all.get(position).getObjectId().toString());
                 startActivity(i);
+                getActivity().finish();
 
             }});
 

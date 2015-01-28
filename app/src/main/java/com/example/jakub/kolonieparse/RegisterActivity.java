@@ -23,11 +23,13 @@ public class RegisterActivity extends ActionBarActivity {
     private EditText usernameView;
     private EditText passwordView;
     private EditText passwordAgainView;
+    private EditText nameView;
+    private EditText surnameView;
+    private EditText telView;
     private RadioGroup radioTypeGroup;
-    private RadioButton radioTypeButton;
-    private RadioButton Radio1;
-    private RadioButton Radio2;
 
+   private RadioButton Radio1;
+    private RadioButton Radio2;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -38,8 +40,13 @@ public class RegisterActivity extends ActionBarActivity {
         usernameView = (EditText) findViewById(R.id.registerLogin);
         passwordView = (EditText) findViewById(R.id.registerPassword1);
         passwordAgainView = (EditText) findViewById(R.id.registerPassword2) ;
-        radioTypeGroup = (RadioGroup) findViewById(R.id.Type);
+        nameView = (EditText) findViewById(R.id.registerName) ;
+        surnameView = (EditText) findViewById(R.id.registerSur) ;
+        telView = (EditText) findViewById(R.id.registerTel) ;
 
+        radioTypeGroup = (RadioGroup) findViewById(R.id.Type);
+        Radio1 = (RadioButton) findViewById(R.id.radioButton);
+        Radio2 = (RadioButton) findViewById(R.id.radioButton2);
 
         // Set up the submit button click handler
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
@@ -59,7 +66,10 @@ public class RegisterActivity extends ActionBarActivity {
                     }
                     validationError = true;
                     validationErrorMessage.append(getResources().getString(R.string.error_blank_password));
+
                 }
+
+
                 if (!isMatching(passwordView, passwordAgainView)) {
                     if (validationError) {
                         validationErrorMessage.append(getResources().getString(R.string.error_join));
@@ -70,6 +80,26 @@ public class RegisterActivity extends ActionBarActivity {
                 }
 
 
+                if (isEmpty(nameView)) {
+                    if (validationError) {
+                        validationErrorMessage.append(getResources().getString(R.string.error_join));
+                    }
+                    validationError = true;
+                    validationErrorMessage.append(getResources().getString(R.string.error_blank_nane));}
+
+                if (isEmpty(surnameView)){
+                    if (validationError) {
+                        validationErrorMessage.append(getResources().getString(R.string.error_join));
+                    }
+                    validationError = true;
+                    validationErrorMessage.append(getResources().getString(R.string.error_blank_surname));}
+
+                if (isEmpty(telView)){
+                    if (validationError) {
+                        validationErrorMessage.append(getResources().getString(R.string.error_join));
+                    }
+                    validationError = true;
+                    validationErrorMessage.append(getResources().getString(R.string.error_blank_tel));}
 
                 validationErrorMessage.append(getResources().getString(R.string.error_end));
 
@@ -104,11 +134,13 @@ public class RegisterActivity extends ActionBarActivity {
                             Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         } else {
                             int selectedId = radioTypeGroup.getCheckedRadioButtonId();
-                            RadioButton Radio1 = (RadioButton) findViewById(R.id.radioButton);
-                            RadioButton Radio2 = (RadioButton) findViewById(R.id.radioButton2);
+
                             // Start an intent for the dispatch activity
                             if(Radio1.getId()==selectedId) {
                                 ParseUser.getCurrentUser().put("UserType", "user");
+                                ParseUser.getCurrentUser().put("Name",nameView.getText().toString());
+                                ParseUser.getCurrentUser().put("Surname", surnameView.getText().toString());
+                                ParseUser.getCurrentUser().put("NrTek", telView.getText().toString());
                                 ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
                                     public void done(ParseException e) {
                                         if (e == null) {
@@ -145,6 +177,28 @@ public class RegisterActivity extends ActionBarActivity {
                 });
             }
         });
+        radioTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (Radio1.getId() == checkedId) {
+                    nameView.setVisibility(View.VISIBLE);
+                    surnameView.setVisibility(View.VISIBLE);
+                   telView.setVisibility(View.VISIBLE);
+                    findViewById(R.id.t1).setVisibility(View.VISIBLE);
+                    findViewById(R.id.t2).setVisibility(View.VISIBLE);
+                    findViewById(R.id.t3).setVisibility(View.VISIBLE);
+                }
+                else if (Radio2.getId() == checkedId) {
+                    nameView.setVisibility(View.GONE);
+                    surnameView.setVisibility(View.GONE);
+                    telView.setVisibility(View.GONE);
+                    findViewById(R.id.t1).setVisibility(View.GONE);
+                    findViewById(R.id.t2).setVisibility(View.GONE);
+                    findViewById(R.id.t3).setVisibility(View.GONE);
+                }
+
+            }});
+
     }
 
     private boolean isEmpty(EditText etText) {
@@ -168,7 +222,7 @@ public class RegisterActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_register, menu);
+        getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }
 
@@ -180,10 +234,21 @@ public class RegisterActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.exitlog) {
+
+                finish();
+                System.exit(0);
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onBackPressed() {
+        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(login);
+        // Closing dashboard screen
+        finish();
     }
 }

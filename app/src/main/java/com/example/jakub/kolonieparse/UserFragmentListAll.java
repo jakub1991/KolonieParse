@@ -48,7 +48,7 @@ public class UserFragmentListAll extends Fragment {
                                            }
                                            objects_all = objects;
 
-                                           arrayAdapterUser = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, aaa);
+                                           arrayAdapterUser = new ArrayAdapter<String>(getActivity(), R.layout.item, aaa);
                                            List.setAdapter(arrayAdapterUser);
                                        } else {
                                            Log.d("Brand", "Error: " + e.getMessage());
@@ -69,6 +69,7 @@ public class UserFragmentListAll extends Fragment {
                         // sending data to new activity
                         i.putExtra("product", objects_all.get(position).getObjectId().toString());
                         startActivity(i);
+                        getActivity().finish();
 
                     }
                 });

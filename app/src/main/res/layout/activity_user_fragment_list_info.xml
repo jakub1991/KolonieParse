@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jakub.kolonieparse.UserFragmentListInfo"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:text="Nazwisko"
+
+        android:textColor="#FFC3C3C6" />
+
+    <EditText
+        android:id="@+id/infName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+
+        android:textColor="#FFC3C3C6" />
+
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:text="Nazwisko"
+
+        android:textColor="#FFC3C3C6" />
+
+    <EditText
+
+
+        android:id="@+id/infSur"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFC3C3C6"
+
+        />
+
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:text="Nr. tel."
+
+        android:textColor="#FFC3C3C6"
+
+
+        />
+
+    <EditText
+        android:id="@+id/infTel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:textColor="#FFC3C3C6" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz"
+        android:id="@+id/infbutton" />
+
+
+</LinearLayout>

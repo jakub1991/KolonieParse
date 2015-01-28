@@ -35,7 +35,7 @@ public class UserFragmentListR extends Fragment {
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Tour");
         query.whereEqualTo("User", ParseUser.getCurrentUser());
 
-        Log.d("Brand", "AAjhgjghjhgj " );
+
         query.findInBackground(new FindCallback<ParseObject>() {
 
             @Override
@@ -53,7 +53,7 @@ public class UserFragmentListR extends Fragment {
                     }
                     objects_all=objects;
 
-                    arrayAdapterUserR = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,aaa);
+                    arrayAdapterUserR = new ArrayAdapter<String>(getActivity(),R.layout.item,aaa);
                     List.setAdapter(arrayAdapterUserR);
                 } else {
                     Log.d("Brand", "Error: " + e.getMessage());
@@ -76,6 +76,7 @@ public class UserFragmentListR extends Fragment {
                 // sending data to new activity
                 i.putExtra("product", objects_all.get(position).getObjectId().toString());
                 startActivity(i);
+                getActivity().finish();
 
             }
         });

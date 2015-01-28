@@ -5,18 +5,22 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Dostępne Kolonie"
+        android:text="Dostępne Kolonie:"
         android:id="@+id/textView"
+        android:textSize="20dip"
+        android:textColor="#FFC3C3C6"
+        android:background="#8d000000"
         android:layout_margin="6dp" />
 
     <ListView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listUserAll"
         android:layout_gravity="left|top"
-        android:layout_marginTop="5dp" />
+        android:background="#23000000"
+        android:layout_margin="6dp" />
 
 </LinearLayout>

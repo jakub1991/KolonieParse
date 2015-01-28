@@ -16,40 +16,100 @@
             android:layout_marginBottom="10dip"
             android:text="Rejestracja"
             android:textSize="25dip"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FFC3C3C6" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dip"
-            android:text="Login" />
+            android:text="Login"
+            android:textColor="#FFC3C3C6" />
         <EditText
             android:id="@+id/registerLogin"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#FFC3C3C6" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dip"
-            android:text="Hasło" />
+            android:text="Hasło"
+            android:textColor="#FFC3C3C6" />
         <EditText
             android:id="@+id/registerPassword1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:password="true" />
+            android:password="true"
+            android:textColor="#FFC3C3C6" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dip"
-            android:text="Powtórz hasło" />
+            android:text="Powtórz hasło"
+            android:textColor="#FFC3C3C6" />
         <EditText
             android:id="@+id/registerPassword2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:password="true" />
+            android:password="true"
+            android:textColor="#FFC3C3C6" />\
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Imię"
+            android:id="@+id/t1"
+            android:textColor="#FFC3C3C6" />
+
+        <EditText
+            android:id="@+id/registerName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+
+            android:textColor="#FFC3C3C6" />
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Nazwisko"
+
+            android:textColor="#FFC3C3C6" />
+
+        <EditText
+
+
+            android:id="@+id/registerSur"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFC3C3C6"
+
+            />
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:text="Nr. tel."
+
+            android:textColor="#FFC3C3C6"
+
+
+            />
+
+        <EditText
+            android:id="@+id/registerTel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:textColor="#FFC3C3C6" />
 
 
         <!--  Login Button -->
@@ -65,13 +125,15 @@
                 android:layout_height="wrap_content"
                 android:text="Normalny urzytkownik"
                 android:id="@+id/radioButton"
-                android:checked="true" />
+                android:checked="true"
+                android:textColor="#FFC3C3C6" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Organizator"
-                android:id="@+id/radioButton2" />
+                android:id="@+id/radioButton2"
+                android:textColor="#FFC3C3C6" />
         </RadioGroup>
 
         <Button
@@ -79,18 +141,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:text="Rejestracja" />
+            android:text="Rejestracja"
+            android:textColor="#FFC3C3C6" />
 
         <!--  Link to Login Screen -->
-        <Button
-            android:id="@+id/btnLinkToLoginScreen"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@null"
-            android:text="Przejdz do ekranu logowania"
-            android:textColor="#21dbd4"
-            android:textStyle="bold" />
     </LinearLayout>
 
 </ScrollView>

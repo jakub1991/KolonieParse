@@ -2,6 +2,7 @@ package com.example.jakub.kolonieparse;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.parse.ParseUser;
 
 
 public class UserPanelActivity extends ActionBarActivity implements ActionBar.TabListener {
@@ -80,7 +83,7 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_user_panel, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -92,11 +95,24 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_exit) {
+            finish();
+            System.exit(0);
+        }
+        else if(id==R.id.action_logout)
+        {   ParseUser.logOut();
+            Intent login = new Intent(getApplicationContext(), LoginActivity.class);
+            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(login);
+
+            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void onBackPressed() {
+
     }
 
     @Override
@@ -134,9 +150,10 @@ public class UserPanelActivity extends ActionBarActivity implements ActionBar.Ta
                     break;
                 case 1:
                     fragment = new UserFragmentListAll();
-                case 2:
-                    fragment = new UserFragmentListAll();
                     break;
+                case 2:
+                    fragment = new UserFragmentListInfo();
+
 
             }
             return fragment;

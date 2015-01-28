@@ -16,7 +16,8 @@
             android:text="Dodaj nowy"
             android:textSize="30dp"
             android:layout_column="0"
-            android:layout_margin="6dp" />
+            android:layout_margin="6dp"
+            android:textColor="#FFC3C3C6" />
 
         <TableLayout
         android:orientation="vertical"
@@ -40,12 +41,14 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Nazwa"
                 android:id="@+id/name"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#FFC3C3C6" />
 
             <EditText
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/addname" />
+                android:id="@+id/addname"
+                android:textColor="#FFC3C3C6" />
 
         </TableRow>
 
@@ -62,12 +65,14 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Opis"
                 android:id="@+id/textView2"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#FFC3C3C6" />
 
             <EditText
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/addinfo" />
+                android:id="@+id/addinfo"
+                android:textColor="#FFC3C3C6" />
         </TableRow>
 
         <TableRow
@@ -83,12 +88,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Cena"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#FFC3C3C6" />
 
             <EditText
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/addprice" />
+                android:id="@+id/addprice"
+                android:textColor="#FFC3C3C6" />
         </TableRow>
 
         <TableRow
@@ -104,14 +111,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Data rozpoczęcia"
                 android:id="@+id/textView5"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#FFC3C3C6" />
 
             <EditText
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/addstart" />
+                android:id="@+id/addstart"
+                android:textColor="#FFC3C3C6" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -136,14 +145,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Data zakonczenia"
                 android:id="@+id/textView3"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#FFC3C3C6" />
 
             <EditText
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/addend" />
+                android:id="@+id/addend"
+                android:textColor="#FFC3C3C6" />
 
             <ImageButton
                 android:layout_width="wrap_content"
@@ -162,7 +173,8 @@
             android:id="@+id/buttonaddnew"
             android:layout_column="1"
             android:layout_gravity="right"
-            android:layout_margin="6dp" />
+            android:layout_margin="6dp"
+            android:textColor="#FFC3C3C6" />
 
     </LinearLayout>
 
